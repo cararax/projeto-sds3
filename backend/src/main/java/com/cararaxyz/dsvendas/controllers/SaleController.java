@@ -1,6 +1,8 @@
 package com.cararaxyz.dsvendas.controllers;
 
 import com.cararaxyz.dsvendas.dto.SaleDTO;
+import com.cararaxyz.dsvendas.dto.SaleSuccessDTO;
+import com.cararaxyz.dsvendas.dto.SaleSumDTO;
 import com.cararaxyz.dsvendas.dto.SellerDTO;
 import com.cararaxyz.dsvendas.services.SaleService;
 import com.cararaxyz.dsvendas.services.SellerService;
@@ -27,5 +29,16 @@ public class SaleController {
         return ResponseEntity.ok(list);
     }
 
+    @GetMapping(value ="/amount-by-seller")
+    public ResponseEntity<List<SaleSumDTO>> amountGroupedBySeller(){
+        List<SaleSumDTO> list = service.amountGroupedBySeller();
+        return ResponseEntity.ok(list);
+    }
+
+    @GetMapping(value ="/success-by-seller")
+    public ResponseEntity<List<SaleSuccessDTO>> successGroupedBySeller(){
+        List<SaleSuccessDTO> list = service.successGroupedBySeller();
+        return ResponseEntity.ok(list);
+    }
 
 }
